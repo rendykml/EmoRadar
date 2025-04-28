@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmoRadar</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="db.js"></script>
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <div class="logo-title">
+                <span class="big-emoticon" title="EmoRadar">😊😐😞</span>
+                <div>
+                    <h1>EmoRadar</h1>
+                    <p class="tagline">Deteksi Emosi Multimodal & Mood Barometer</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Penjelasan Aplikasi -->
+        <section class="about-section">
+            <h2>Apa itu EmoRadar?</h2>
+            <p>
+                <b>EmoRadar</b> adalah aplikasi web yang mampu mendeteksi emosi pengguna secara multimodal: dari teks chat, ekspresi wajah, suara, dan aktivitas digital. Semua data digabungkan dengan teknologi <b>Windsurf Fusion</b> untuk menghasilkan prediksi emosi secara real-time.
+            </p>
+            <ul>
+                <li>🔤 Analisis chat/text</li>
+                <li>📷 Deteksi ekspresi wajah dari gambar/webcam</li>
+                <li>🎤 Analisis intonasi suara</li>
+                <li>🖱️ Aktivitas digital (ketikan & klik)</li>
+                <li>📈 Visualisasi mood kelompok secara timeline</li>
+                <li>💡 Saran regulasi emosi adaptif</li>
+                <li>📝 Laporan mingguan yang bisa diunduh</li>
+            </ul>
+        </section>
+
+        <main>
+            <!-- Input Section -->
+            <section class="input-section">
+                <h2>Input Data Emosi</h2>
+                <div class="input-cards">
+                    <div class="card chat-input">
+                        <span class="icon">🔤</span>
+                        <label for="chatText">Chat Text:</label><br>
+                        <textarea id="chatText" placeholder="Tulis pesan di sini..."></textarea>
+                    </div>
+
+                    <div class="card image-input">
+                        <span class="icon">📷</span>
+                        <label for="imageUpload">Upload Gambar Wajah:</label><br>
+                        <input type="file" accept="image/*" id="imageUpload"><br>
+                        <button id="webcamBtn">Snapshot Webcam</button><br>
+                        <video id="webcam" autoplay playsinline style="display:none;"></video>
+                        <canvas id="snapshotCanvas" style="display:none;"></canvas>
+                    </div>
+
+                    <div class="card audio-input">
+                        <span class="icon">🎤</span>
+                        <label for="audioUpload">Upload/Record Suara:</label><br>
+                        <input type="file" accept="audio/*" id="audioUpload"><br>
+                        <button id="recordBtn">Record Audio</button><br>
+                        <audio id="audioPlayback" controls style="display:none;"></audio>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Activity Tracker -->
+            <section class="activity-section">
+                <h2><span class="icon">🖱️</span> Activity Tracker</h2>
+                <div id="activityLog">Keystrokes and clicks will be tracked here.</div>
+            </section>
+
+            <!-- Fusion Analysis -->
+            <section class="fusion-section">
+                <h2><span class="icon">🔀</span> Windsurf Fusion Analysis</h2>
+                <button id="analyzeBtn">Analyze Emotion</button>
+                <div id="emotionResult">Predicted Emotion: <span id="predictedEmotion">-</span></div>
+            </section>
+
+            <!-- Mood Barometer -->
+            <section class="mood-section">
+                <h2><span class="icon">📈</span> Group Mood Timeline</h2>
+                <canvas id="moodChart"></canvas>
+            </section>
+
+            <!-- Report Section -->
+            <section class="report-section">
+                <h2><span class="icon">📝</span> Emotional Reports</h2>
+                <button id="downloadJson">Download Weekly JSON</button>
+                <button id="downloadHtml">Download Weekly HTML</button>
+            </section>
+        </main>
+
+        <!-- Suggestion Popup -->
+        <div id="suggestionPopup" class="popup" style="display:none;"></div>
+        <footer class="main-footer">
+            <span>Made with ❤️ by EmoRadar Team &middot; 2025</span>
+        </footer>
+    </div>
+</body>
+</html>
